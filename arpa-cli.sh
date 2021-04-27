@@ -198,6 +198,7 @@ echo "10) Gimp (Create/edit photographs)."
 echo "11) OpenShot (Video Editor)."
 echo "12) Audacity (Record and edit audio files)."
 echo "13) VScodium (Source code editor)."
+echo "14) Raspi-config."
 echo ""
 echo "p) Previous."
 echo "q) Return to the main menu."
@@ -235,6 +236,8 @@ openshot;;
 audacity;;
 13)
 vscodium;;
+14)
+raspiconfig;;
 
 p)
 addapps2;;
@@ -1114,6 +1117,36 @@ echo "Open it from wine explorer. Wine explorer path: My Documents/wineapps."
 sleep 10
 }
 
+raspiconfig () {
+    
+  
+  FILE=/usr/bin/raspi-config
+  if [ ! -f "$FILE" ]; then
+  
+  rm ~/.local/share/applications/raspi-config.desktop
+  
+  wget --continue https://sourceforge.net/projects/fenixlinux/files/repo/archlinux/pi/raspi-config-git.pkg.tar.zst
+  
+  sudo pacman -U raspi-config-git.pkg.tar.zst || echo "Error installing raspi-config."
+  
+  echo "[Desktop Entry]
+  Type=Application
+  Name=Raspi-config
+  GenericName=Raspi-config
+  Comment=Raspi-config port for archlinux and MfJaro
+  Categories=System;
+  Exec=lxterminal -e sudo raspi-config
+  Icon=/usr/share/icons/hicolor/128x128/apps/rpi-imager.png
+  StartupWMClass=Tor Browser" > ~/.local/share/applications/raspi-config.desktop
+  
+  echo "Done.";
+  
+  else
+    echo "Nothing to do."
+  fi
+
+ sleep 10
+}
 
 
 addapps
