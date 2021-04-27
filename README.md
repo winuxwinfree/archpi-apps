@@ -1,3 +1,3 @@
 # archpi-apps
 
-My apps pkbuild, tar.zst, scripts to install it and create a destkop shorcut... like pi-apps and pikiss
+Installers for cool applications compatible with Archlinux on Raspberry PI.
